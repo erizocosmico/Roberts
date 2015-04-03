@@ -25,6 +25,7 @@ class CreateBaseStructure < Sequel::Migration
       Integer :created_at
       foreign_key :reported_by, :users
       String :email_to_reply, :size => 100
+      Boolean :solved, :default => false
     end
 
     create_table(:actions) do
@@ -33,7 +34,8 @@ class CreateBaseStructure < Sequel::Migration
       foreign_key :ticket_id, :tickets
       Integer :timestamp
       Integer :type
-      Integer :new_type
+      Integer :priority
+      Integer :new_priority
       String :comment
     end
   end

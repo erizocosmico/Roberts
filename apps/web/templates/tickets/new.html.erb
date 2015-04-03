@@ -1,0 +1,43 @@
+<form name="new-ticket" action="<%= link_to(:tickets) %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= csrf %>">
+
+  <!-- TODO: i18n -->
+  <input type="text" name="title" placeholder="Title of your ticket..." value="<%= title.value unless !title %>" required minlength="3" maxlength="255" />
+  <% if title and title.error %>
+  Title must be at between 3 and 255 characters long.
+  <% end %>
+
+  <select name="type">
+    <% types.each do |_t| %>
+    <option value="<%= _t.value %>" <% if type and type.value == _t.value %>selected<% end %>>
+      <%= t _t.name %>
+    </option>
+    <% end %>
+  </select>
+  <% if type and type.error %>
+  Invalid value.
+  <% end %>
+
+  <select name="priority">
+    <% priorities.each do |p| %>
+    <option value="<%= p.value %>" <% if priority and priority.value == p.value %>selected<% end %>>
+      <%= t p.name %>
+    </option>
+    <% end %>
+  </select>
+  <% if priority and priority.error %>
+  Invalid value.
+  <% end %>
+
+  <input type="email" name="email_to_reply" value="<%= email_to_reply.value unless !email_to_reply %>" />
+  <% if email_to_reply and email_to_reply.error %>
+  You have to enter a valid email address.
+  <% end %>
+
+  <textarea name="description" required minlength="3"><%= description.value unless !description %></textarea>
+  <% if description and description.error %>
+  Description must be at least 3 characters long.
+  <% end %>
+
+  <button type="submit">Create ticket</button>
+</form>

@@ -1,13 +1,10 @@
-get '/' to: 'tickets#list'
+get '/', to: 'tickets#list', as: :home
 
-resources 'tickets', except: [:index] do
-  collection do
-    get 'list/page/:page', to: 'tickets#list'
-  end
-end
+resources 'tickets', except: [:index]
+get 'tickets/list/:page', to: 'tickets#list', as: :tickets_list
 
 namespace 'user' do
-  get '/login', to: 'user#login'
-  post '/login', to: 'user#enter'
-  get '/logout', to: 'user#logout'
+  get '/login', to: 'user#login', as: :user_login
+  post '/login', to: 'user#enter', as: :user_login_submit
+  get '/logout', to: 'user#logout', as: :user_logout
 end

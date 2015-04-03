@@ -1,0 +1,15 @@
+<form name="login" action="<%= link_to :user_login %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= csrf %>">
+
+  <% if login_error %>
+  <div class="alert alert-error">
+    The username or password don't match any of our users.
+  </div>
+  <% end %>
+
+  <!-- TODO: i18n -->
+  <input type="email" name="email" placeholder="" value="<%= email.value unless !email %>" required />
+  <input type="password" name="password" placeholder="" value="<%= password.value unless !password %>" required />
+
+  <button type="submit">Login</button>
+</form>

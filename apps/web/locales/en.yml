@@ -1,0 +1,18 @@
+en:
+  task: Task
+  bug: Bug
+  question: Question
+  other: Other
+
+  very_low: Very low
+  low: Low
+  medium: Medium
+  high: High
+  very_high: Very high
+
+  no_tickets: There are not tickets yet.
+  prev_page: Previous page
+  next_page: Next page
+
+  manage: Manage
+  slack_msg: 'Hurr durr! A new ticket "%{title}" of type "%{type}" and a "%{priority}" priority has ben posted! <%{url}>'

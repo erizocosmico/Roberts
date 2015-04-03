@@ -2,3 +2,5 @@
 *.iml
 *.db
 config/.env
+.DS_Store
+Gemfile.lock

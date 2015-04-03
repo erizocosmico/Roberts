@@ -1,9 +1,12 @@
-<!doctype HTML>
+<!doctype html>
 <html>
   <head>
-    <title>Web</title>
+    <title>Roberts</title>
   </head>
   <body>
+    <% if authenticated %>
+      <%= current_user.name %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

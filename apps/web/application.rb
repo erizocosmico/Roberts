@@ -1,5 +1,10 @@
 module Web
   require 'rack/protection'
+  require 'i18n'
+
+  I18n.load_path = Dir["#{ __dir__ }/locales/*.yml"]
+  I18n.backend.load_translations
+  I18n.default_locale = :en
 
   class Application < Lotus::Application
     configure do
@@ -10,6 +15,8 @@ module Web
       root __dir__
 
       load_paths << [
+        'mixins',
+        'presenters',
         'controllers',
         'views'
       ]
@@ -28,7 +35,6 @@ module Web
       middleware.use Rack::Protection::FrameOptions
       middleware.use Rack::Protection::RemoteReferrer
       middleware.use Rack::Protection::FormToken
-      middleware.use Rack::Protection::EscapedParams
       middleware.use Rack::Protection::JsonCsrf
       middleware.use Rack::Protection::RemoteToken
       middleware.use Rack::Protection::HttpOrigin
@@ -53,6 +59,25 @@ module Web
 
       # Enabling serving assets
       serve_assets true
+
+      controller.prepare do
+        include Roberts::Model
+        include Web::Mixins::Form
+        include Web::Mixins::Session
+        include Web::Mixins::Auth
+
+        before :authenticate!
+
+        expose :current_user
+        expose :authenticated
+        expose :csrf
+      end
+
+      view.prepare do
+        include Web::Mixins::Translate
+        include Web::Mixins::Links
+        include Web::Presenters
+      end
     end
 
     ##
