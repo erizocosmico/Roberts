@@ -1,0 +1,40 @@
+<% if tickets.empty? %>
+<div class="alert alert-info">
+  <%= t 'no_tickets' %>
+</div>
+<% else %>
+<ul class="ticket-list">
+  <% tickets.each do |ticket| %>
+  <li class="ticket">
+    <h3 class="ticket-title">
+      <%= ticket.title %>
+    </h3>
+
+    <div class="ticket-info">
+      <span class="ticket-type type-<%= ticket.type %>"><%= t ticket.type %></span>
+      <span class="ticket-priority priority-<%= ticket.priority %>"><%= t ticket.priority %></span>
+      <span class="ticket-timestamp"><%= ticket.created_at %></span>
+    </div>
+
+    <% if authenticated and current_user.admin? %>
+    <div class="ticket-actions">
+      <a href="<%= link_to(:edit_tickets, id: ticket.id) %>"><%= t 'manage' %></a>
+    </div>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+<% end %>
+
+<ul class="pagination">
+  <% if page > 1 %>
+  <li class="prev-page">
+    <a href="/tickets/list/<%= page - 1 %>"><%= t 'prev_page' %></a>
+  </li>
+  <% end %>
+  <% if page < num_pages %>
+  <li class="next-page">
+    <a href="/tickets/list/<%= page + 1 %>"><%= t 'next_page' %></a>
+  </li>
+  <% end %>
+</ul>

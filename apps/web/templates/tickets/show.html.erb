@@ -1,0 +1,28 @@
+<div class="ticket">
+  <h1 class="ticket-title">
+    <%= ticket.title %>
+  </h1>
+
+  <div class="ticket-info">
+    <span class="ticket-type type-<%= ticket.type %>"><%= t ticket.type %></span>
+    <span class="ticket-priority priority-<%= ticket.priority %>"><%= t ticket.priority %></span>
+    <span class="ticket-timestamp"><%= ticket.created_at %></span>
+  </div>
+
+  <div class="ticket-description">
+    <%= ticket.description %>
+  </div>
+
+  <div class="ticket-actions">
+    <% if actions.empty? %>
+      <div class="info info-warn">
+      </div>
+    <% else %>
+      <ul class="ticket-action-list">
+        <% actions.each do |a| %>
+          <!-- TODO: Action -->
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

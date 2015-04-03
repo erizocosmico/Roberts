@@ -1,0 +1,18 @@
+es:
+  task: Tarea
+  bug: Error
+  question: Pregunta
+  other: Otros
+
+  very_low: Muy baja
+  low: Baja
+  medium: Media
+  high: Alta
+  very_high: Muy alta
+
+  no_tickets: Aún no hay tickets creados.
+  next_page: Página siguiente
+  prev_page: Página anterior
+
+  manage: Administrar
+  slack_msg: 'Hurr durr! ¡Un nuevo ticket "%{title}" de tipo "%{type}" y de prioridad "%{priority}" ha sido añadido! <%{url}>'
