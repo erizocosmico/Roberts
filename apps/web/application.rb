@@ -1,10 +1,22 @@
 module Web
   require 'rack/protection'
   require 'i18n'
+  require 'mail'
 
+  # Setup internationalization
   I18n.load_path = Dir["#{ __dir__ }/locales/*.yml"]
   I18n.backend.load_translations
   I18n.default_locale = :en
+
+  # Setup email delivery to use Mandrill
+  Mail.defaults do
+    delivery_method :smtp, {
+      :port      => 587,
+      :address   => "smtp.mandrillapp.com",
+      :user_name => ENV['MANDRILL_USERNAME'],
+      :password  => ENV['MANDRILL_PASSWORD']
+    }
+  end
 
   class Application < Lotus::Application
     configure do
@@ -15,7 +27,8 @@ module Web
       root __dir__
 
       load_paths << [
-        'mixins',
+        'middlewares',
+        'helpers',
         'presenters',
         'controllers',
         'views'
@@ -62,9 +75,10 @@ module Web
 
       controller.prepare do
         include Roberts::Model
-        include Web::Mixins::Form
-        include Web::Mixins::Session
-        include Web::Mixins::Auth
+        include Web::Helpers::Form
+        include Web::Helpers::Session
+        include Web::Middlewares::Auth
+        include Web::Helpers::Links
 
         before :authenticate!
 
@@ -74,8 +88,8 @@ module Web
       end
 
       view.prepare do
-        include Web::Mixins::Translate
-        include Web::Mixins::Links
+        include Web::Helpers::Translate
+        include Web::Helpers::Links
         include Web::Presenters
       end
     end

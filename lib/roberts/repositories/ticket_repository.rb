@@ -10,7 +10,7 @@ module Roberts::Model
     # @return Query
     def self.by_page(page)
       query do
-        select(:id, :title, :type, :priority, :created_at).
+        select(:id, :title, :type, :priority, :created_at, :status).
           desc(:priority).
           desc(:created_at).
           limit(MAX_ITEMS_PER_PAGE).

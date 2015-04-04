@@ -1,6 +1,6 @@
 get '/', to: 'tickets#list', as: :home
 
-resources 'tickets', except: [:index]
+resources 'tickets', except: [:index, :destroy, :edit]
 get 'tickets/list/:page', to: 'tickets#list', as: :tickets_list
 
 namespace 'user' do
