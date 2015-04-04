@@ -13,6 +13,8 @@ es:
   no_tickets: Aún no hay tickets creados.
   next_page: Página siguiente
   prev_page: Página anterior
+  open_tickets: Tickets abiertos
+  view_ticket: Ver ticket
 
   manage: Administrar
   slack_msg: 'Hurr durr! ¡Un nuevo ticket "%{title}" de tipo "%{type}" y de prioridad "%{priority}" ha sido añadido! <%{url}>'
@@ -34,3 +36,26 @@ es:
 
   email_subject: Tu ticket ha sido actualizado
   email_body_html: 'Tu ticket %{title} ha sido %{msg} Commentario: %{comment}'
+
+  login: Entrar
+  logout: Salir
+  new_ticket: Nuevo ticket
+
+  title: Título
+  ticket_type: Tipo de ticket
+  priority: Prioridad
+  email_to_reply: Notificar cambios a este email
+  create_ticket: Crear ticket
+  description: Descripción (acepta markdown)
+  title_error: El título debe tener entre 3 y 255 caracteres.
+  type_error: Valor no válido.
+  priority_error: Valor no válido.
+  email_error: Debes introducir una dirección de email válida.
+  description_error: La descripción debe tener al menos 3 caracteres.
+  action: Acción
+  comment: Comentario
+  actions: Actualizaciones
+
+  login_error: El usuario o contraseña introducidos no son válidos.
+  email: Email
+  password: Contraseña

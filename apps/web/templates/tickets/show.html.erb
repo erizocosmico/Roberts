@@ -1,35 +1,43 @@
-<div class="ticket">
-  <h1 class="ticket-title">
+<div class="ticket margin-top-1em margin-bottom-1em">
+  <h3 class="ticket-title">
     <%= ticket.title %>
-  </h1>
+  </h3>
 
   <div class="ticket-info">
     <span class="ticket-type type-<%= ticket.type %>"><%= t ticket.type %></span>
     <span class="ticket-priority priority-<%= ticket.priority %>"><%= t ticket.priority %></span>
+    <% if ticket.solved? %>
+    <span class="tag solved"><%= t 'solved' %></span>
+    <% end %>
+    <% if ticket.closed? %>
+    <span class="tag closed"><%= t 'closed' %></span>
+    <% end %>
     <span class="ticket-timestamp"><%= ticket.created_at %></span>
   </div>
 
   <% if authenticated and current_user.admin? and ticket.display_actions? %>
-  <div class="ticket-actions">
-    <button id="ticket-manage"><%= t 'manage' %></button>
+  <div class="pull-right margin-top-1em">
+    <a id="ticket-manage" class="waves-effect waves-light btn modal-trigger" href="#modal-manage"><i class="mdi-action-settings left"></i><%= t 'manage' %></a>
   </div>
   <% end %>
 
-  <div class="ticket-description">
+  <div class="ticket-description margin-top-1em margin-bottom-1em">
     <%= ticket.description %>
   </div>
 
   <div class="ticket-actions">
     <% if actions.empty? %>
-      <div class="info info-warn">
+      <div class="alert alert-warn">
         <%= t 'no_actions' %>
       </div>
     <% else %>
+      <h4><%= t 'actions' %></h4>
+
       <ul class="ticket-action-list">
         <% actions.each do |a| %>
           <li class="action action-<%= a.type.to_s %>">
             <p class="msg"><%= a.msg %></p>
-            <span class="date"><%= a.timestamp %></span>
+            <span class="ticket-timestamp"><%= a.timestamp %></span>
             <% if a.comment %>
             <p class="comment"><%= a.comment %></p>
             <% end %>
@@ -41,7 +49,10 @@
 </div>
 
 <% if authenticated and current_user.admin? and ticket.display_actions? %>
-<div id="manage-form">
-  <%= render template: 'tickets/manage' %>
+<div id="modal-manage" class="modal">
+  <div class="modal-content">
+    <h4><%= t 'manage' %></h4>
+    <%= render template: 'tickets/manage' %>
+  </div>
 </div>
 <% end %>

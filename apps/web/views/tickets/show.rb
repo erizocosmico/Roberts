@@ -3,6 +3,11 @@ module Web::Views::Tickets
     include Web::View
     include Roberts::Action
     include Roberts::Ticket
+    layout :application
+
+    def page_title
+      layout.page_title + translate('view_ticket')
+    end
 
     def actions
       locals[:actions].map do |a|

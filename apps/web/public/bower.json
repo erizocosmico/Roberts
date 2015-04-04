@@ -1,0 +1,30 @@
+{
+  "name": "Roberts",
+  "version": "1.0.0",
+  "homepage": "https://github.com/mvader/roberts",
+  "authors": [
+    "Miguel Molina <hi@mvader.me>"
+  ],
+  "description": "Small app to automate the management of interruptions to the development team by other departments of the company",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "app",
+    "company",
+    "management",
+    "internal",
+    "tool"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "0.96.*"
+  }
+}

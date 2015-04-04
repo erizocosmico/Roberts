@@ -1,15 +1,31 @@
-<form name="login" action="<%= link_to :user_login %>" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= csrf %>">
+<form name="login" action="<%= link_to :user_login %>" method="POST" class="row">
+  <div class="col s12 m6 offset-m3 margin-top-1em margin-bottom-1em">
+    <h3 class="center-align"><%= t 'login' %></h3>
 
-  <% if login_error %>
-  <div class="alert alert-error">
-    The username or password don't match any of our users.
+    <input type="hidden" name="authenticity_token" value="<%= csrf %>">
+
+    <% if login_error %>
+    <div class="alert alert-error">
+      <%= t 'login_error' %>
+    </div>
+    <% end %>
+
+    <div class="row">
+      <div class="input-field">
+        <input type="email" id="email" name="email" placeholder="" value="<%= email.value unless !email %>" class="validate" required />
+        <label class="active" for="email"><%= t 'email' %></label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field">
+        <input type="password" id="password" name="password" placeholder="" value="<%= password.value unless !password %>" class="validate" required />
+        <label class="active" for="password"><%= t 'password' %></label>
+      </div>
+    </div>
+
+    <div class="center-align">
+      <button type="submit" class="btn waves-effect waves-light"><%= t 'login' %></button>
+    </div>
   </div>
-  <% end %>
-
-  <!-- TODO: i18n -->
-  <input type="email" name="email" placeholder="" value="<%= email.value unless !email %>" required />
-  <input type="password" name="password" placeholder="" value="<%= password.value unless !password %>" required />
-
-  <button type="submit">Login</button>
 </form>
