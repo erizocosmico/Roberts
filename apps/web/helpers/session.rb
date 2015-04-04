@@ -1,4 +1,4 @@
-module Web::Mixins
+module Web::Helpers
   module Session
     # Retrieves the Rack session
     #

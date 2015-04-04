@@ -1,4 +1,4 @@
-module Web::Mixins
+module Web::Middlewares
   module Auth
     include Roberts::Model
 
@@ -19,6 +19,12 @@ module Web::Mixins
           @current_user = user
           @authenticated = true
         end
+      end
+    end
+
+    def admin_area!
+      if !@authenticated or !@current_user.admin?
+        redirect_to Web::Routes.path :home
       end
     end
   end

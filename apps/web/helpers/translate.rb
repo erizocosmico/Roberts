@@ -1,4 +1,4 @@
-module Web::Mixins
+module Web::Helpers
   module Translate
     # Translates a message with the given key interpolating all arguments passed.
     #
@@ -8,5 +8,7 @@ module Web::Mixins
     def t(k, *args)
       I18n.t k, *args
     end
+
+    alias_method :translate, :t
   end
 end

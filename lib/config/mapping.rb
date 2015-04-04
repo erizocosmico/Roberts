@@ -30,7 +30,7 @@ collection :tickets do
   attribute :created_at, Integer
   attribute :reported_by, Integer
   attribute :email_to_reply, String
-  attribute :solved, Boolean
+  attribute :status, Integer
 end
 
 collection :actions do

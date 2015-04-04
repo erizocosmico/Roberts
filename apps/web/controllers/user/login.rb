@@ -1,7 +1,7 @@
 module Web::Controllers::User
   class Login
     include Web::Action
-    prepend Web::Mixins::Csrf
+    prepend Web::Helpers::Csrf
 
     expose :email
     expose :password
