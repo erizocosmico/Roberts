@@ -1,25 +1,47 @@
-<form name="manage-ticket" action="<%= link_to(:tickets, id: ticket.id) %>" method="POST">
+<form name="manage-ticket" action="<%= link_to(:tickets, id: ticket.id) %>" method="POST" class="margin-top-1em">
   <input type="hidden" name="authenticity_token" value="<%= csrf %>">
   <input type="hidden" name="_method" value="patch" />
 
-  <select name="action">
-    <% action_types.each do |k, v| %>
-    <option value="<%= v %>">
-      <%= t k %>
-    </option>
-    <% end %>
-  </select>
+  <div class="row">
+    <div class="input-field">
+      <select name="action" id="action">
+        <% action_types.each do |k, v| %>
+        <option value="<%= v %>">
+          <%= t k %>
+        </option>
+        <% end %>
+      </select>
+      <label class="active" for="action"><%= t 'action' %></label>
+    </div>
+  </div>
 
-  <select name="priority">
-    <% priorities.each do |p| %>
-    <option value="<%= p.value %>" <% if ticket.priority == p.name %>selected<% end %>>
-      <%= t p.name %>
-    </option>
-    <% end %>
-  </select>
+  <div class="row" id="priority-row">
+    <div class="input-field">
+      <select name="priority" id="priority">
+        <% priorities.each do |p| %>
+        <option value="<%= p.value %>" <% if ticket.priority == p.name %>selected<% end %>>
+          <%= t p.name %>
+        </option>
+        <% end %>
+      </select>
+      <label class="active" for="priority"><%= t 'priority' %></label>
+    </div>
+  </div>
 
-  <textarea name="comment" minlength="3"></textarea>
+  <div class="row">
+    <div class="input-field">
+      <textarea name="comment" id="comment" class="materialize-textarea validate" minlength="3"></textarea>
+      <label class="active" for="comment"><%= t 'comment' %></label>
+    </div>
+  </div>
 
-  <button type="button"><%= t 'cancel' %></button>
-  <button type="submit"><%= t 'save_changes' %></button>
+  <div class="center-align">
+    <a class="btn-flat waves-effect waves-teal" href="#" id="cancel-modal-manage">
+      <%= t 'cancel' %>
+    </a>
+
+    <button class="btn waves-effect waves-light" type="submit">
+      <%= t 'save_changes' %>
+    </button>
+  </div>
 </form>

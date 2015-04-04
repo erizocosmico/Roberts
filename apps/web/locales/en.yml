@@ -13,6 +13,8 @@ en:
   no_tickets: There are no tickets yet.
   prev_page: Previous page
   next_page: Next page
+  open_tickets: Open tickets
+  view_ticket: View ticket
 
   manage: Manage
   slack_msg: 'Hurr durr! A new ticket "%{title}" of type "%{type}" and a "%{priority}" priority has ben posted! <%{url}>'
@@ -34,3 +36,26 @@ en:
 
   email_subject: Your ticket has been updated
   email_body_html: 'Your ticket %{title} has been updated. %{msg} Comment: %{comment}'
+
+  logout: Logout
+  login: Login
+  new_ticket: New ticket
+
+  title: Title
+  ticket_type: Ticket type
+  priority: Priority
+  email_to_reply: Send updates to this email
+  create_ticket: Create ticket
+  description: Description (accepts markdown)
+  title_error: Title must be at between 3 and 255 characters long.
+  type_error: Invalid value.
+  priority_error: Invalid value.
+  email_error: You have to enter a valid email address.
+  description_error: Description must be at least 3 characters long.
+  action: Action
+  comment: Comment
+  actions: Updates
+
+  login_error: The username or password don't match any of our users.
+  email: Email
+  password: Password

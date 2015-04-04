@@ -1,3 +1,5 @@
+<h3><%= t 'open_tickets' %></h3>
+
 <% if tickets.empty? %>
 <div class="alert alert-info">
   <%= t 'no_tickets' %>
@@ -6,9 +8,9 @@
 <ul class="ticket-list">
   <% tickets.each do |ticket| %>
   <li class="ticket">
-    <h3 class="ticket-title">
+    <h5 class="ticket-title">
       <a href="<%= link_to :tickets, id: ticket.id %>"><%= ticket.title %></a>
-    </h3>
+    </h5>
 
     <div class="ticket-info">
       <span class="ticket-type type-<%= ticket.type %>"><%= t ticket.type %></span>
@@ -20,15 +22,15 @@
 </ul>
 <% end %>
 
-<ul class="pagination">
+<ul class="ticket-pagination">
   <% if page > 1 %>
   <li class="prev-page">
-    <a href="/tickets/list/<%= page - 1 %>"><%= t 'prev_page' %></a>
+    <a href="/tickets/list/<%= page - 1 %>" class="btn-flat waves-effect waves-teal"><i class="mdi-navigation-chevron-left"></i><span><%= t 'prev_page' %></span></a>
   </li>
   <% end %>
   <% if page < num_pages %>
   <li class="next-page">
-    <a href="/tickets/list/<%= page + 1 %>"><%= t 'next_page' %></a>
+    <a href="/tickets/list/<%= page + 1 %>" class="btn-flat waves-effect waves-teal"><span><%= t 'next_page' %></span><i class="mdi-navigation-chevron-right"></i></a>
   </li>
   <% end %>
 </ul>

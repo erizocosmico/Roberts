@@ -6,6 +6,7 @@ module Web::Presenters
     include Roberts::Action
     include Roberts::Ticket
     include Web::Helpers::Translate
+    include Web::Helpers::Markdown
 
     def timestamp
       Time.at(super).strftime '%H:%M:%S - %d/%m/%Y'
@@ -25,6 +26,10 @@ module Web::Presenters
 
     def msg
       translate 'action_' + type.to_s, priority: translate(priority), new_priority: translate(new_priority)
+    end
+
+    def comment
+      _raw md_to_html(super)
     end
   end
 end

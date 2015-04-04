@@ -66,14 +66,18 @@ module Web::Controllers::Tickets
       action = Web::Presenters::ActionPresenter.new action
       _t = self.method :translate
 
-      mail = Mail.new do
-        from     ENV['MAIL_FROM']
-        to       ticket.email_to_reply
-        subject  _t.call('email_subject')
-        body     _t.call('email_body_html', title: ticket.title, msg: action.msg, comment: action.comment)
-      end
+      begin
+        mail = Mail.new do
+          from     ENV['MAIL_FROM']
+          to       ticket.email_to_reply
+          subject  _t.call('email_subject')
+          body     _t.call('email_body_html', title: ticket.title, msg: action.msg, comment: action.comment)
+        end
 
-      mail.deliver!
+        mail.deliver!
+      rescue
+        # TODO: Log the mail delivery error
+      end
     end
   end
 end
