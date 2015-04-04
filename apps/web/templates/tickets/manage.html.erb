@@ -1,0 +1,25 @@
+<form name="manage-ticket" action="<%= link_to(:tickets, id: ticket.id) %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= csrf %>">
+  <input type="hidden" name="_method" value="patch" />
+
+  <select name="action">
+    <% action_types.each do |k, v| %>
+    <option value="<%= v %>">
+      <%= t k %>
+    </option>
+    <% end %>
+  </select>
+
+  <select name="priority">
+    <% priorities.each do |p| %>
+    <option value="<%= p.value %>" <% if ticket.priority == p.name %>selected<% end %>>
+      <%= t p.name %>
+    </option>
+    <% end %>
+  </select>
+
+  <textarea name="comment" minlength="3"></textarea>
+
+  <button type="button"><%= t 'cancel' %></button>
+  <button type="submit"><%= t 'save_changes' %></button>
+</form>

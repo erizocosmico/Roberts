@@ -25,7 +25,7 @@ class CreateBaseStructure < Sequel::Migration
       Integer :created_at
       foreign_key :reported_by, :users
       String :email_to_reply, :size => 100
-      Boolean :solved, :default => false
+      Integer :status, :default => 0
     end
 
     create_table(:actions) do

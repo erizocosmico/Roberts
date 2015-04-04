@@ -16,3 +16,21 @@ es:
 
   manage: Administrar
   slack_msg: 'Hurr durr! ¡Un nuevo ticket "%{title}" de tipo "%{type}" y de prioridad "%{priority}" ha sido añadido! <%{url}>'
+
+  solved: Solucionado
+  closed: Cerrado
+
+  change_priority: Cambiar prioridad
+  solve: Solucionar
+  close: Cerrar
+
+  save_changes: Guardar cambios
+  cancel: Cancelar
+
+  no_actions: Aún no hay acciones.
+  action_change_priority: 'La prioridad ha sido cambiada de %{priority} a %{new_priority}.'
+  action_solve: 'El ticket fue marcado como resuelto.'
+  action_close: 'El ticket fue marcado como cerrado.'
+
+  email_subject: Tu ticket ha sido actualizado
+  email_body_html: 'Tu ticket %{title} ha sido %{msg} Commentario: %{comment}'

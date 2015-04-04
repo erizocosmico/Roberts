@@ -8,7 +8,7 @@ module Web::Controllers::User
         session.delete :session_token
       end
 
-      redirect_to Web::Routes.path(:home)
+      redirect_to link_to(:home)
     end
   end
 end

@@ -5,8 +5,7 @@ module Web::Controllers::Tickets
     include Web::Action
     include Roberts::Slack
     include Roberts::Ticket
-    include Web::Mixins::Translate
-    include Web::Mixins::Links
+    include Web::Helpers::Translate
 
     params do
       param :title, presence: true, size: 3..255
@@ -18,7 +17,7 @@ module Web::Controllers::Tickets
 
     def call(params)
       if !params.valid?
-        url = Web::Routes.path(:new_tickets)
+        url = link_to(:new_tickets)
 
         save_form(
           :create_ticket,
@@ -38,7 +37,7 @@ module Web::Controllers::Tickets
 
         ticket = TicketRepository.create ticket
         send_ticket_to_slack ticket
-        url = Web::Routes.path(:tickets, id: ticket.id)
+        url = link_to(:tickets, id: ticket.id)
       end
 
       redirect_to url
@@ -50,9 +49,9 @@ module Web::Controllers::Tickets
     # @param ticket [Roberts::Model::Ticket]
     # @api private
     def send_ticket_to_slack(ticket)
-      priority = t priorities[ticket.priority].name
-      type = t types[ticket.type].name
-      msg = t 'slack_msg', title: ticket.title, url: link_to(:tickets, id: ticket.id), priority: priority, type: type
+      priority = translate priorities[ticket.priority].name
+      type = translate types[ticket.type].name
+      msg = translate 'slack_msg', title: ticket.title, url: link_to(:tickets, id: ticket.id), priority: priority, type: type
 
       post_message msg
     end

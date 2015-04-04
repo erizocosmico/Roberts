@@ -16,5 +16,9 @@ module Web::Presenters
     def priority
       priorities[super].name
     end
+
+    def display_actions?
+      active?
+    end
   end
 end

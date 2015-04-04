@@ -9,6 +9,12 @@
     <span class="ticket-timestamp"><%= ticket.created_at %></span>
   </div>
 
+  <% if authenticated and current_user.admin? and ticket.display_actions? %>
+  <div class="ticket-actions">
+    <button id="ticket-manage"><%= t 'manage' %></button>
+  </div>
+  <% end %>
+
   <div class="ticket-description">
     <%= ticket.description %>
   </div>
@@ -16,13 +22,26 @@
   <div class="ticket-actions">
     <% if actions.empty? %>
       <div class="info info-warn">
+        <%= t 'no_actions' %>
       </div>
     <% else %>
       <ul class="ticket-action-list">
         <% actions.each do |a| %>
-          <!-- TODO: Action -->
+          <li class="action action-<%= a.type.to_s %>">
+            <p class="msg"><%= a.msg %></p>
+            <span class="date"><%= a.timestamp %></span>
+            <% if a.comment %>
+            <p class="comment"><%= a.comment %></p>
+            <% end %>
+          </li>
         <% end %>
       </ul>
     <% end %>
   </div>
 </div>
+
+<% if authenticated and current_user.admin? and ticket.display_actions? %>
+<div id="manage-form">
+  <%= render template: 'tickets/manage' %>
+</div>
+<% end %>

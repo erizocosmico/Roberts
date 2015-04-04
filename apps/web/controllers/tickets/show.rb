@@ -1,6 +1,8 @@
 module Web::Controllers::Tickets
   class Show
     include Web::Action
+    prepend Web::Helpers::Csrf
+    include Roberts::Action
 
     params do
       param :id, presence: true, type: Integer

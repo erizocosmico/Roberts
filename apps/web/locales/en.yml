@@ -10,9 +10,27 @@ en:
   high: High
   very_high: Very high
 
-  no_tickets: There are not tickets yet.
+  no_tickets: There are no tickets yet.
   prev_page: Previous page
   next_page: Next page
 
   manage: Manage
   slack_msg: 'Hurr durr! A new ticket "%{title}" of type "%{type}" and a "%{priority}" priority has ben posted! <%{url}>'
+
+  solved: Solved
+  closed: Closed
+
+  change_priority: Change priority
+  solve: Solve
+  close: Close
+
+  save_changes: Save changes
+  cancel: Cancel
+
+  no_actions: There are no actions yet.
+  action_change_priority: 'The priority changed from %{priority} to %{new_priority}.'
+  action_solve: 'The ticket was marked as solved.'
+  action_close: 'The ticket was marked as closed.'
+
+  email_subject: Your ticket has been updated
+  email_body_html: 'Your ticket %{title} has been updated. %{msg} Comment: %{comment}'

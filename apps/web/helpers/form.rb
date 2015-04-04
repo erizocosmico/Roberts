@@ -1,4 +1,4 @@
-module Web::Mixins
+module Web::Helpers
   module Form
     FormField = Struct.new(:value, :error)
 

@@ -1,4 +1,4 @@
-module Web::Mixins
+module Web::Helpers
   module Links
     # Returns the relative path for a link with the given name and arguments.
     #

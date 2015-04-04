@@ -1,4 +1,4 @@
-module Web::Mixins
+module Web::Helpers
   # Note: This module needs to be prepended, not included!
   module Csrf
     # Overrides the call method of the module where it is prepended

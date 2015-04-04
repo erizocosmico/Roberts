@@ -31,13 +31,13 @@ module Web::Controllers::User
         session[:session_token] = user_session.token
       end
 
-      redirect_to Web::Routes.path(:home)
+      redirect_to link_to(:home)
     end
 
     private
     def invalid_form(params)
       save_form(:login, params, [:email, :password], errors)
-      redirect_to Web::Routes.path(:user_login)
+      redirect_to link_to(:user_login)
     end
   end
 end

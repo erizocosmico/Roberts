@@ -1,7 +1,7 @@
 module Web::Controllers::Tickets
   class New
     include Web::Action
-    prepend Web::Mixins::Csrf
+    prepend Web::Helpers::Csrf
     include Roberts::Ticket
 
     expose :title
