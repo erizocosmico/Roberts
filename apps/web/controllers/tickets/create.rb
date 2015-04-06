@@ -51,7 +51,7 @@ module Web::Controllers::Tickets
     def send_ticket_to_slack(ticket)
       priority = translate priorities[ticket.priority].name
       type = translate types[ticket.type].name
-      msg = translate 'slack_msg', title: ticket.title, url: link_to(:tickets, id: ticket.id), priority: priority, type: type
+      msg = translate 'slack_msg', title: ticket.title, url: ENV['APP_DOMAIN'] + link_to(:tickets, id: ticket.id), priority: priority, type: type
 
       post_message msg
     end

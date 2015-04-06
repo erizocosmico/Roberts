@@ -65,18 +65,23 @@ module Web::Controllers::Tickets
     def send_action_notification!(ticket, action)
       action = Web::Presenters::ActionPresenter.new action
       _t = self.method :translate
+      _l = self.method :link_to
 
       begin
         mail = Mail.new do
           from     ENV['MAIL_FROM']
           to       ticket.email_to_reply
           subject  _t.call('email_subject')
-          body     _t.call('email_body_html', title: ticket.title, msg: action.msg, comment: action.comment)
+
+          html_part do
+            content_type 'text/html; charset=UTF-8'
+            body _t.call('email_body_html', title: ticket.title, msg: action.msg, url: ENV['APP_DOMAIN'] + _l.call(:tickets, id: ticket.id))
+          end
         end
 
         mail.deliver!
       rescue
-        # TODO: Log the mail delivery error
+        puts 'Error! Could not deliver the email!'
       end
     end
   end
