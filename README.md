@@ -66,3 +66,20 @@ rake user:new_admin['User name', 'User email', 'User password'] LOTUS_ENV=produc
 ```
 rake user:change_pass['user email', 'new password'] LOTUS_ENV=production
 ```
+
+## Using MySQL instead of SQLite3
+
+* Add the following line to your ```Gemfile```:
+```
+gem 'mysql2'
+```
+
+* Install the gem:
+```
+bundle
+```
+
+* Change your ```.env``` file with the following database URL:
+```
+mysql2://user:pwd@host/db
+```
