@@ -35,7 +35,7 @@ es:
   action_close: 'El ticket fue marcado como cerrado.'
 
   email_subject: Tu ticket ha sido actualizado
-  email_body_html: 'Tu ticket %{title} ha sido %{msg} Commentario: %{comment}'
+  email_body_html: 'Tu ticket %{title} ha sido actualizado. %{msg} Ver ticket: <a href="%{url}">%{url}</a>'
 
   login: Entrar
   logout: Salir
