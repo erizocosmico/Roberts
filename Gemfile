@@ -10,14 +10,8 @@ gem 'rack-protection', '~> 1.5.3'
 gem 'i18n', '0.7.0'
 gem 'mail', '~> 2.6.3'
 gem 'kramdown', '~> 1.6.0'
-
-platforms :ruby do
-  gem 'sqlite3'
-end
-
-platforms :jruby do
-  gem 'jdbc-sqlite3'
-end
+gem 'mysql2'
+gem 'sqlite3'
 
 group :test do
   gem 'minitest'
