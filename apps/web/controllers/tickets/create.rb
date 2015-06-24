@@ -12,7 +12,7 @@ module Web::Controllers::Tickets
       param :description, presence: true, size: 3..9999999
       param :type, type: Integer, presence: true, inclusion: 0..3
       param :priority, type: Integer, presence: true, inclusion: 0..4
-      param :email_to_reply, presence: false, format: /(|.+@.+\..+)/
+      param :email_to_reply, presence: true, format: /(.+@.+\..+)/
     end
 
     def call(params)

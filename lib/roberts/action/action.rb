@@ -5,7 +5,8 @@ module Roberts::Action
     {
       :change_priority => 1,
       :solve => 2,
-      :close => 3
+      :close => 3,
+      :comment => 4
     }
   end
 

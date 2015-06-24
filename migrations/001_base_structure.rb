@@ -19,7 +19,7 @@ class CreateBaseStructure < Sequel::Migration
     create_table(:tickets) do
       primary_key :id
       String :title, :size => 255
-      String :description
+      String :description, :text => true
       Integer :type
       Integer :priority
       Integer :created_at
@@ -36,7 +36,7 @@ class CreateBaseStructure < Sequel::Migration
       Integer :type
       Integer :priority
       Integer :new_priority
-      String :comment
+      String :comment, :text => true
     end
   end
 

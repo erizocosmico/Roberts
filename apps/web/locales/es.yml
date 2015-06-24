@@ -33,6 +33,7 @@ es:
   action_change_priority: 'La prioridad ha sido cambiada de %{priority} a %{new_priority}.'
   action_solve: 'El ticket fue marcado como resuelto.'
   action_close: 'El ticket fue marcado como cerrado.'
+  action_comment: 'Publicado un nuevo comentario.'
 
   email_subject: Tu ticket ha sido actualizado
   email_body_html: 'Tu ticket %{title} ha sido actualizado. %{msg} Ver ticket: <a href="%{url}">%{url}</a>'
@@ -59,3 +60,4 @@ es:
   login_error: El usuario o contraseña introducidos no son válidos.
   email: Email
   password: Contraseña
+  reported_by: Reportado por

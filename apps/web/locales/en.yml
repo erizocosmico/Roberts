@@ -33,6 +33,7 @@ en:
   action_change_priority: 'The priority changed from %{priority} to %{new_priority}.'
   action_solve: 'The ticket was marked as solved.'
   action_close: 'The ticket was marked as closed.'
+  action_comment: 'A new comment was posted.'
 
   email_subject: Your ticket has been updated
   email_body_html: 'Your ticket %{title} has been updated. %{msg} View ticket: <a href="%{url}">%{url}</a>'
@@ -59,3 +60,4 @@ en:
   login_error: The username or password don't match any of our users.
   email: Email
   password: Password
+  reported_by: Reported by
