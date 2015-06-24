@@ -10,7 +10,7 @@ module Web::Controllers::Tickets
 
     params do
       param :id, presence: true, type: Integer
-      param :action, presence: true, type: Integer, inclusion: 1..3
+      param :action, presence: true, type: Integer, inclusion: 1..4
       param :priority, presence: true, type: Integer, inclusion: 0..4
       param :comment, type: String
     end
